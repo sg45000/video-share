@@ -1,67 +1,63 @@
 @import "bootstrap-sprockets";
-@import "bootstrap"; 
-
+@import "bootstrap";
 @mixin box_sizing{
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing:          border-box;
-  }
-  
-  // application
-  h1{
-      text-align:center;
-  
-  }
-  
-  
-  input ,textarea{
-      @include box_sizing;
-      margin-bottom:10px;
-  }
-  
-  #error_explanation{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:          border-box;
+}
+
+
+// application
+h1{
+    text-align:center;
+    
+}
+input ,textarea{
+    @include box_sizing;
+    margin-bottom:10px;
+}
+#error_explanation{
+  color: red;
+  ul{
     color: red;
-    ul{
-      color: red;
-      margin:0 0 30px 0;
-    }
+    margin:0 0 30px 0;
   }
-  
-  .field_with_errors{
-    @extend .has-error;
-    .form-control{
-      color:$state-danger-text;
+}
+.field_with_errors{
+  @extend .has-error;
+  .form-control{
+    color:$state-danger-text;
+  }
+}
+
+body{
+  padding-top:60px;
+}
+
+//header
+
+//home
+#home_page{
+  .home_top{
+    background-image:url("/images/janis.jpg");
+    height: 600px;
+    background-size: cover;
+    color:white;
+
+
+    h1{
+      font-size:60px;
+      letter-spacing:5px;
+      padding-top:350px;
     }
+    .home_nav{
+      letter-spacing:2px;
+      font-size:20px;
+      text-align:center;
+      margin-top:5px;
+    }
+
   }
 
-  body{
-    padding-top:60px;
-  }
-  
-  //header
-  
-  //home
-  #home_page{
-    .home_top{
-      background-image:url("/images/janis1.jpg");
-      height: 600px;
-      background-size: cover;
-      color:white;
-  
-  
-      h1{
-        font-size:60px;
-        letter-spacing:5px;
-        padding-top:350px;
-      }
-      .home_nav{
-        letter-spacing:2px;
-        font-size:20px;
-        text-align:center;
-        margin-top:5px;
-      }
-  
-    }
-  
-  
-  } 
+
+} 

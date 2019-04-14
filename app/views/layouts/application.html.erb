@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>VideoShare</title>
+    <!--CSRF対策-->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +13,11 @@
   <body>
     <div class="container">
       <%= render 'layouts/header'%>
+      <% flash.each do |message_type, message|%>
+        <%=content_tag(:div, message,class: "alert alert-#{message_type}")%>
+      <% end %>
       <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
 </html>
