@@ -1,9 +1,9 @@
 class User < ApplicationRecord
+    has_many :videos
     validates :name , presence: true, length: {minimum: 6, maximum: 20}
     EMAIL_REGEX = /\A[\w\-.]+@[a-z\d\-]+\.[a-z]+\z/i
     validates :email, presence: true, format: {with: EMAIL_REGEX}, uniqueness: true
-
-    validates :password, presence: true
+    validates :password, presence: true, length: {minimum: 6, maximum: 16}
 
     has_secure_password
     class<<self
