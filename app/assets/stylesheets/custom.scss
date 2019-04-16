@@ -56,8 +56,29 @@ body{
       text-align:center;
       margin-top:5px;
     }
-
   }
+} 
+
+//user_show
+.user_info{
+  p{
+    margin-top:20px;
+    font-size:25px;
+  }
+}
+
+//_video_index
+.videos{
+  span{ font-weight:bold;
+  }
+}
 
 
+.video_link{
+  a{
+    margin-bottom:10px;
+  }
+}
+.desc{
+    border-left:ridge thin #CCC;
 } 
