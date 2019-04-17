@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
     before_action :logged_in_user? ,only:[:show,:edit,:update]
+    before_action :correct_user, only:[:edit,:update]
     
       def show
         @user = User.find(params[:id])
+        @chart = category_chart(@user)
         @categories = Category.all
         if params[:category_id]
           videos=Video.includes(:categories).where(categories_videos:{category_id: params[:category_id]})
@@ -55,5 +57,25 @@ class UsersController < ApplicationController
     
       def user_params
         params.require(:user).permit(:name,:email,:password,:password_confirmation)
+      end
+
+      def correct_user
+        @user=User.find(params[:id])
+        redirect_to root_url unless current_user?(@user)
+      end
+
+      def category_chart(user)
+        videos=Video.where(user_id: user.id)
+        data={}
+        videos.each do |video|
+          video.categories.each do |category|
+            if data.include?(:"#{category.name}")
+              data[:"#{category.name}"]+=1
+            else
+              data[:"#{category.name}"]=1
+            end
+          end
+        end
+        return data
       end
 end
