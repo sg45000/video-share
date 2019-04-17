@@ -12,22 +12,43 @@ Rails 5.2.3
 Bundler 2.0.1
 
 ### Installation
-Clone this repository
+1. Clone this repository
+
 `$ git clone git@github.com:sg45000/video-share.git`
-Move into your project
+
+2. Move into your project
+
 `$ cd video-share`
-Install Ruby 2.5.3 (If nessesary)
+
+3. Install Ruby 2.5.3 (If nessesary)
+
 `$ rbenv install 2.5.3`
-Set Ruby version to 2.5.3(If nessesary)
+
+4. Set Ruby version to 2.5.3(If nessesary)
+
 `$ rbenv local 2.5.3`
-Install Bundler 2.0.1(If nessesary)
+
+5. Install Bundler 2.0.1(If nessesary)
+
 `$ gem install bundler -v 2.0.1`
-Install gems
+
+6. Install gems
+
 `$ bundle install`
-Exec migration
+
+7. Exec migration
+
 `$ bin/rails db:migrate RAILS_ENV=development`
-Create sample data(If nessesary)
+
+8. Create sample data(If nessesary)
+
 `$ rake db:seed`
-Build & run server
+
+9. Build & run server
+
 `$ bin/rails s`
-Then, you can see app in http://localhost:3000
+
+10. Then, you can see app in http://localhost:3000
+
+### Heroku Deploy
+https://video-share-3u289.herokuapp.com/
