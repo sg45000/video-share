@@ -12,6 +12,19 @@ h1{
     text-align:center;
     
 }
+
+header{
+  margin: 50px;
+  text-align: center;
+  li{
+    vertical-align: middle;
+    border-left: solid 0.1px #404040;
+    border-right: solid 0.1px #404040;
+  }
+}
+@media(max-width: 760px){
+  header{margin: 150px}
+}
 input ,textarea{
     @include box_sizing;
     margin-bottom:10px;
