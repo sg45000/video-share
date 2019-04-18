@@ -1,4 +1,12 @@
 class User < ApplicationRecord
+    has_many :active_relationships, class_name: "Relationship",
+                                    foreign_key: "follower_id",
+                                    dependent: :destroy
+    has_many :passive_relationships, class_name: "Relationship",
+                                    foreign_key: "followed_id",
+                                    dependent: :destroy
+    has_many :following, through: :active_relationships,source: :followed
+    has_many :followers, through: :passive_relationships,source: :follower
     has_many :videos
     validates :name , presence: true, length: {minimum: 6, maximum: 20}
     EMAIL_REGEX = /\A[\w\-.]+@[a-z\d\-]+\.[a-z]+\z/i
@@ -22,6 +30,17 @@ class User < ApplicationRecord
 
     end
 
+    def follow(other_user)
+        following << other_user
+    end
+
+    def unfollow(other_user)
+        active_relationships.find_by(followed_id: other_user.id).destroy
+    end
+
+    def following?(other_user)
+        following.include?(other_user)
+    end
 
     class<<self
         def digest(string)

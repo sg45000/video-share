@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-md-12 user_info">
       <p><%= @user.name %></p>
+      <section class="stats">
+        <%= render "shared/stats" %>
+        <%= render "follow_form" if logged_in? %>
+      </section>
       <p><%= link_to("New Videos", new_video_path,class: "btn btn-info")%></p>
       <p><%= link_to("Settings", edit_user_path(@user),class: "btn btn-info")%></p>
       <%= pie_chart(@chart)%> 

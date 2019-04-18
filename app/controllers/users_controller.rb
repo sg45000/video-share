@@ -2,7 +2,10 @@ class UsersController < ApplicationController
 
     before_action :logged_in_user? ,only:[:show,:edit,:update]
     before_action :correct_user, only:[:edit,:update]
-    
+      
+      def index
+      end
+
       def show
         @user = User.find(params[:id])
         @chart = category_chart(@user)
@@ -44,6 +47,20 @@ class UsersController < ApplicationController
         else
           render 'edit'
         end
+      end
+
+      def following
+        @title = "Following"
+        @user = User.find(params[:id])
+        @users = @user.following.paginate(page: params[:page],per_page: 10)
+        render 'show_follow'
+      end
+
+      def followers
+        @title = "Followers"
+        @user = User.find_by(id: params[:id])
+        @users = @user.followers.paginate(page: params[:page],per_page: 10)
+        render 'show_follow'
       end
     
       private
