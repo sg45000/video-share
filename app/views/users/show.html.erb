@@ -1,5 +1,11 @@
 <div class="row">
-  <div class="col-md-12 user_info">
+  <div class="user_info">
+    <section class="col-md-4">
+      <% if @user.image? %>
+        <p><%= image_tag @user.image.to_s ,size: "128x128" %></p>
+      <%else%>
+        <p><%= image_tag "/images/noimage.gif",size: "128x128"%></p>
+      <%end%>
       <p><%= @user.name %></p>
       <section class="stats">
         <%= render "shared/stats" %>
@@ -7,8 +13,13 @@
       </section>
       <p><%= link_to("New Videos", new_video_path,class: "btn btn-info")%></p>
       <p><%= link_to("Settings", edit_user_path(@user),class: "btn btn-info")%></p>
-      <%= pie_chart(@chart)%> 
+    </section>
+    <section class="col-md-6">
+      <%= pie_chart(@chart)%>
+    </section> 
   </div>
+</div>
+<div class="row">
   <div class="category_list">
     <%=link_to("All",user_path,class: "btn btn-info")%>
     <% @categories.each do |category|%>
