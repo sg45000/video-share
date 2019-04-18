@@ -3,6 +3,10 @@ class UsersController < ApplicationController
     before_action :logged_in_user? ,only:[:show,:edit,:update]
     before_action :correct_user, only:[:edit,:update]
     
+      def index
+        @users = User.all.paginate(page: params[:page],per_page: 10)
+      end
+
       def show
         @user = User.find(params[:id])
         @chart = category_chart(@user)
