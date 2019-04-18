@@ -12,7 +12,12 @@ gem 'bootstrap-will_paginate'
 # gem 'jquery-rails'
 gem 'bcrypt'
 gem "bootstrap-sass", ">= 3.4.1"
+#タグリストのチャート
 gem 'chartkick'
+#画像アップロード
+gem 'carrierwave'
+#画像加工
+#gem 'rmagick'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

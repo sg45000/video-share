@@ -12,6 +12,10 @@ h1{
     text-align:center;
     
 }
+
+header{
+  margin: 50px;
+}
 input ,textarea{
     @include box_sizing;
     margin-bottom:10px;
