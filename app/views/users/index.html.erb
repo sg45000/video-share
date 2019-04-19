@@ -1,10 +1,27 @@
 <div class="row">
-  <% @users.each do |user|%>
-    <%= user.name %>
-    <% if user.image? %>
-      <p><%= image_tag user.image.to_s ,size: "128x128" %></p>
-    <%else%>
-      <p><%= image_tag "/images/noimage.gif",size: "128x128"%></p>
-    <%end%>
+  <table border="0">
+  <tbody>
+  <% @users.each_with_index do |user,i|%>
+    <tr>
+      <td>
+        <% @user = user %>
+        <%= user.name %>
+        <%= link_to (user) do%>
+          <% if user.image? %>
+            <p><%= image_tag user.image.to_s ,size: "128x128" %></p>
+          <% else %>
+            <p><%= image_tag "/images/noimage.gif",size: "128x128"%></p>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <%= render "follow_form" %>
+      </td>
+      <td>
+        <%= pie_chart(@charts[i])%>
+      </td>
+    </tr>
   <% end %>
+  </tbody>
+  </table>
 </div>

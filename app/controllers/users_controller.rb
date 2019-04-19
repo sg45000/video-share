@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     
       def index
         @users = User.all.paginate(page: params[:page],per_page: 10)
+        @charts = []
+        @users.each do |user|
+          @charts << category_chart(user)
+        end
       end
 
       def show
@@ -66,12 +70,7 @@ class UsersController < ApplicationController
     
       private
 
-      def logged_in_user?
-        unless logged_in?
-          flash[:danger] = "Please log in your account before access this page." 
-          redirect_to login_url
-        end
-      end
+
     
       def user_params
         params.require(:user).permit(:name,:email,:password,:password_confirmation,:image)
