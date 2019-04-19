@@ -8,7 +8,13 @@
         <section class="stats">
             <%= render 'shared/stats' %>
         </section>
-    # ここに@usersの画像を張る。
+        <% @users.each do |user|%>
+            <% if user.image? %>
+                <%= image_tag user.image.to_s,size: "64x64" %>
+            <% else %>
+                <%= image_tag "/images/noimage.gif",size: "64x64" %>
+            <% end %>
+        <% end %>
     </aside>
     <div class="col-md-8">
         <h3><%= @title %></h3>
