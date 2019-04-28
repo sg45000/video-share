@@ -18,7 +18,12 @@ gem 'chartkick'
 gem 'carrierwave'
 #画像加工
 #gem 'rmagick'
-
+#.env
+gem 'dotenv-rails'
+#
+gem 'google-api-client', '~> 0.11'
+# 
+gem 'optimist'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

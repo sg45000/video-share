@@ -3,9 +3,9 @@
     <%= render 'shared/error_messages', object: @video%>
     <%= form_for(@video) do |f|%>
       <%= f.label :name%>
-      <%= f.text_field :name, class: 'form-control'%>
+      <%= f.text_field :name, class: 'form-control',value: @name || @video.name%>
       <%= f.label :url%>
-      <%= f.text_field :url, class: 'form-control' %>
+      <%= f.text_field :url, class: 'form-control',value: @url || @video.url%>
       <%= f.label :description%>
       <%= f.text_area :description, class: 'form-control'%>
       <% @categories.each do |category|%>
