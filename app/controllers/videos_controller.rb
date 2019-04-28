@@ -12,19 +12,26 @@ class VideosController < ApplicationController
   end
 
   def new
+    if(!(params[:name].nil? && params[:url].nil?))
+      @name=params[:name]
+      @url=params[:url]
+    end
     @video=Video.new
     @categories = Category.all
   end
 
   def create
     @video = Video.new(video_params)
-    category_params['categories'].each do |category|
-      @video.categories << Category.find(category)
+    if(category_params['categories']!=nil)
+      category_params['categories'].each do |category|
+        @video.categories << Category.find(category)
+      end
     end
     @video.user_id=current_user.id
     if @video.save
       redirect_to current_user
     else
+      @categories = Category.all
       render 'new'
     end
 
@@ -38,14 +45,16 @@ class VideosController < ApplicationController
   def update
     @video=Video.find(params[:id])
     @video.categories.delete_all
-    category_params['categories'].each do |category|
-      @video.categories << Category.find(category)
+    if(category_params['categories']!=nil)
+      category_params['categories'].each do |category|
+        @video.categories << Category.find(category)
+      end
     end
     if @video.update_attributes(video_params)
       redirect_to current_user
     else
       @categories=Category.all
-      render 'new'
+      render 'edit'
     end
   end
 

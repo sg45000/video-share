@@ -3,10 +3,10 @@ class Video < ApplicationRecord
   has_and_belongs_to_many :categories
   URL_REGEX = /\Ahttps:\/\/www\.youtube\.com\/watch\?v=(.+)\z/i
     validates :user_id, presence: true
-    validates :name, presence: true, length:{maximum: 20}
+    validates :name, presence: true, length:{maximum: 50}
     validates :url, presence: true
     validates :description, length:{maximum: 255}
-
+    # validates :categories, presence: true
 
     def embed_url
         url = self.url.match(URL_REGEX)

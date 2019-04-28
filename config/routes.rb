@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/youtube_list' => 'youtube_list#index'
   root 'static_pages#home'
   get '/help' => 'static_pages#help'
   get '/signup' => 'users#new'

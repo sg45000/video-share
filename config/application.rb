@@ -18,5 +18,7 @@ module VideoShare
     
     # carrierwaveのおまじない
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+    #libを読み込む
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end
