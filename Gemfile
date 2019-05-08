@@ -9,7 +9,7 @@ gem 'rails', '~> 5.2.3'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # gem 'faker'
-# gem 'jquery-rails'
+gem 'jquery-rails'
 gem 'bcrypt'
 gem "bootstrap-sass", ">= 3.4.1"
 #タグリストのチャート

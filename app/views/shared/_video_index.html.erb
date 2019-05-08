@@ -1,20 +1,34 @@
 
 <%= will_paginate @videos %>
 <% @videos.each do |video| %>
-      <h2 class="col-md-9 col-md-offset-3"><%=video.name%></h2>
-      <div class="col-md-4 col-md-offset-3 videos">
-        <iframe width="280" height="160" src="<%=video.embed_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <h2 class="col-md-9 col-md-offset-3 col-xs-12"><%=video.name%></h2>
+      <div class="col-md-4 col-md-offset-3 videos col-xs-12">
+        <iframe width="340" height="180" src="<%=video.embed_url%>" 
+        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-        <p>
-        <span>Tags:</span>
+        <span class="category-list">
         <% video.categories.each do |category|%>
           <span class="btn btn-primary btn-xs"><%= category.name %></span>
         <% end %>
-        </p>
+        </span>
+        <div class="dropdown">
+          <span class="fa-stack video_links">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <span>
+              <i class="fas fa-ellipsis-v fa-stack-1x" style="color:grey;"></i>
+            </span>
+          </span>
+          <div class="dropdown-content">
+            <span><i class="fas fa-pen"></i><%=link_to("Update",edit_video_path(video),class:"original-btn")%></span>
+            <span><i class="fas fa-link"></i><%=link_to("Link","#{video.url}",class:"original-btn",target: "_blank")%></span>
+          </div>
+        </div>
       </div>
-      <div class="col-md-2 video_link">
-          <span><%=link_to("Update",edit_video_path(video),class:"btn btn-primary")%></span> <br>
-          <span><%=link_to("Link","#{video.url}",class:"btn btn-primary",target: "_blank")%></span>
-      </div>
-      <div class="col-md-3 desc"><%= video.description%></div>
+      <div class="col-md-3 desc col-xs-6"><%= video.description%></div>
 <% end %> 
+<script>
+  $('.video_links').on("click",function(){
+    $(this).next().toggleClass('dropdown-active');
+  });
+  
+</script>
