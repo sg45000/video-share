@@ -1,16 +1,16 @@
 <h1>Recommend Video List</h1>
-  <%= form_tag youtube_list_path, {method: :get} do %>
-    <span class="fab fa-youtube fa-2x" style="color: red; display:inline-block;"></span>
+  <%= form_tag youtube_list_path, {method: :get,class:'search_form'} do %>
+    <span class="fab fa-youtube fa-3x youtube_icon"></span>
     <%= text_field_tag :key_word,@key_word%>
     <%= submit_tag "Search" %>
   <%end%>
   <div class="videos">
     <% @videos.each do |video| %>
-      <span class="col-md-4 col-xs-6">
+      <span class="col-md-4 col-xs-6 ">
         <iframe width="300" height="200" src="<%="https://www.youtube.com/embed/"+"#{video[:id][:video_id]}"%>" 
         frameborder="0"></iframe>
         <%=link_to "Resister",new_video_path(name: video[:snippet][:title],
-                                      url:"https://www.youtube.com/watch?v="+video[:id][:video_id]),class: "btn btn-primary"%>
+                                      url:"https://www.youtube.com/watch?v="+video[:id][:video_id]),class: "resister-btn"%>
       </span>
     <%end%>
   </div>

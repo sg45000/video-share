@@ -1,26 +1,9 @@
 <div class="row">
-  <div class="user_info">
-    <section class="col-md-4">
-      <% if @user.image? %>
-        <p><%= image_tag @user.image.to_s ,size: "128x128" %></p>
-      <%else%>
-        <p><%= image_tag "/images/noimage.gif",size: "128x128"%></p>
-      <%end%>
-      <p><%= @user.name %></p>
-      <section class="stats">
-        <%= render "shared/stats" %>
-        <%= render "follow_form" if logged_in? %>
-      </section>
-      <p><%= link_to("New Videos", new_video_path,class: "btn btn-info")%></p>
-      <p><%= link_to("Settings", edit_user_path(@user),class: "btn btn-info")%></p>
-    </section>
-    <section class="col-md-6">
-      <%= pie_chart(@chart)%>
-    </section> 
-  </div>
+  <h2 class="title">Your Profile</h2>
+  <%=render 'user_info'%>
 </div>
 <div class="row">
-  <div class="category_list">
+  <div class="category_link">
     <%=link_to("All",user_path,class: "btn btn-info")%>
     <% @categories.each do |category|%>
       <%=link_to("#{category.name}",user_path(category_id: category.id),class: "btn btn-info")%>
