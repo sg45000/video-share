@@ -3,20 +3,22 @@
 </header>
 <aside id="sidebar">
   <div id="sidebar-inner">
-    <p class="sidebar_txt"><%= link_to(image_tag('home_icon.png', size: "128x54"), root_path,class: "navbar-brand") %></p>
+    <p class="sidebar_txt"><%=link_to(image_tag('home_icon.png', size: "128x54"), root_path,class: "navbar-brand") %></p>
   </div>
   <div id="sidebar-menu">
     <%if logged_in? %>
       <p class="sidebar_txt"><%=link_to("Youtube List", youtube_list_path)%></p>
       <p class="sidebar_txt"><%=link_to("All User", users_path)%></p>
       <p class="sidebar_txt"><%=link_to("All Videos", videos_path)%></p>
-      <p class="sidebar_txt"><%=link_to("Your Plofile",current_user)%></p>
+      <p class="sidebar_txt"><%=link_to("Your Profile",current_user)%></p>
+      <p class="sidebar_txt"><%=link_to("New Videos", new_video_path)%></p>
+      <p class="sidebar_txt"><%=link_to("User Settings", edit_user_path(current_user))%></p>
       <p class="sidebar_txt"><%=link_to("Sign out",logout_path,method: :delete)%></p>
     <%else%>
-      <p class="sidebar_txt"><%= link_to("Create Account",signup_path)%></p>
-      <p class="sidebar_txt"><%= link_to("Sign in",login_path)%></p>
+      <p class="sidebar_txt"><%=link_to("Create Account",signup_path)%></p>
+      <p class="sidebar_txt"><%=link_to("Sign in",login_path)%></p>
     <% end %>
-      <p class="sidebar_txt"><%= link_to("Help", help_path)%></p>
+      <p class="sidebar_txt"><%=link_to("Help", help_path)%></p>
   </div>
 </aside>
 <div id="sidebar-bg"></div>

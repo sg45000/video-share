@@ -72,7 +72,9 @@ header {
   z-index:3;
   display:none;
 }
-
+.title{
+  font-family: serif;
+}
 
 input ,textarea{
     @include box_sizing;
@@ -123,10 +125,22 @@ body{
 
 //user_show
 .user_info{
+  background-color: #d7eeff;
+  padding: 10px 0 10px 0;
+  margin-bottom: 20px;
   p{
+    width:128px;
     margin-top:20px;
     font-size:25px;
   }
+}
+.user_name{
+  box-shadow:0 0 4px rgba(0,0,0,0.5);
+  font-family: Georgia, serif;
+  text-align: center;
+}
+.user_image{
+  box-shadow:0 0 4px rgba(0,0,0,0.5);
 }
 
 .stats {
@@ -138,9 +152,11 @@ body{
     padding: 0 10px;
     border-left: 1px solid $gray-lighter;
     color: gray;
+    
     &:first-child {
       padding-left: 0;
       border: 0;
+      box-shadow:0 0 4px rgba(0,0,0,0.5);
     }
     &:hover {
       text-decoration: none;
@@ -152,15 +168,28 @@ body{
   }
 }
 
+//user_new
+.image_thumb{
+  width:200px;
+  height:200px;
+}
+
 //_video_index
 .videos{
   span{ font-weight:bold;
     margin-bottom:3px;
   }
 }
-.category-list{
+.category_list{
   position:relative;
   vertical-align:top;
+}
+.category_link{
+  padding: 10px 0;
+  border-top:groove 0.5px rgba(100,140,240,0.5);
+  border-bottom:groove 0.5px rgba(100,140,240,0.5);
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,0.2);
+
 }
 
 .video_links{
@@ -174,21 +203,23 @@ body{
   position: relative;
   display:inline-block;
   cursor: pointer;
+  &:hover .dropdown-content{
+    display:block;
+  }
 }
 .dropdown-content{
   display:none;
   position: absolute;
   background: #fff;
   width:250%;
-  height:400%;
+  height:auto;
   font-size: 15px;
   box-shadow:0 0 3px rgba(0,0,0,0.5);
   border-radius:0.3em;
   color: #000;
   z-index:1;
-}
-.dropdown-active{
-  display:block;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 .original-btn{
   display:inline-block;
@@ -201,9 +232,37 @@ body{
     text-decoration: none;
     color:#000;
   }
-  // a:hover{}
 }
+
 
 .desc{
     border-left:ridge thin #CCC;
+}
+
+//form
+.check_box{
+  display: inline-block;
+  margin-right:8px; 
+}
+
+.search_form{
+  text-align: center;
+
+}
+.youtube_icon{
+  color: red;
+  display:inline-block;
+  vertical-align:middle;
+}
+.resister-btn{
+  display: block;
+  width:auto;
+  background-color: #CCC;
+  box-shadow:0 0 3px rgba(0,0,0,0.5);
+  color: black;
+  text-align: center;
+  &:hover{
+    opacity:0.6;
+    text-decoration: none;
+  }
 }

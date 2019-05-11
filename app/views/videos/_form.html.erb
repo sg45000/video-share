@@ -9,11 +9,12 @@
       <%= f.label :description%>
       <%= f.text_area :description, class: 'form-control'%>
       <% @categories.each do |category|%>
-        <%= f.label "#{category.name}"%>
-        <%= f.check_box :categories,{multiple: true,checked: checked?(@video,category)},category.id,nil%>
+        <span class="check_box">
+          <%= f.check_box :categories,{multiple: true,checked: checked?(@video,category)},category.id,nil%>
+          <%= f.label "#{category.name}"%>
+        </span>
       <% end %>
-      <%= f.submit class: 'btn btn-primary'%>
-      <%= link_to "Link to Youtube" , "https://www.youtube.com/?gl=JP&hl=ja",target: "_blank", class: 'btn btn-primary'%>
+      <%= f.submit class: 'original-btn'%>
     <% end %>
   </div>
 </div> 

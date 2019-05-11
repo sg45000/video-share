@@ -1,0 +1,17 @@
+  <section class="user_info col-md-12">
+    <section class="col-md-4">
+      <% if @user.image? %>
+        <p class="user_image"><%= image_tag @user.image.to_s ,size: "128x128" %></p>
+      <%else%>
+        <p class="user_image"><%= image_tag "/images/noimage.gif",size: "128x128"%></p>
+      <%end%>
+      <p class="user_name"><%= @user.name %></p>
+      <section class="stats">
+        <%= render "shared/stats" %>
+        <%= render "follow_form" if logged_in? %>
+      </section>
+    </section>
+    <section class="col-md-6">
+      <%= pie_chart(@chart)%>
+    </section> 
+  </section>

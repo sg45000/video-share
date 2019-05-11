@@ -58,6 +58,7 @@ class UsersController < ApplicationController
         @title = "Following"
         @user = User.find(params[:id])
         @users = @user.following.paginate(page: params[:page],per_page: 10)
+        @chart = category_chart(@user)
         render 'show_follow'
       end
 
@@ -65,6 +66,7 @@ class UsersController < ApplicationController
         @title = "Followers"
         @user = User.find_by(id: params[:id])
         @users = @user.followers.paginate(page: params[:page],per_page: 10)
+        @chart = category_chart(@user)
         render 'show_follow'
       end
     
@@ -81,18 +83,5 @@ class UsersController < ApplicationController
         redirect_to root_url unless current_user?(@user)
       end
 
-      def category_chart(user)
-        videos=Video.where(user_id: user.id)
-        data={}
-        videos.each do |video|
-          video.categories.each do |category|
-            if data.include?(:"#{category.name}")
-              data[:"#{category.name}"]+=1
-            else
-              data[:"#{category.name}"]=1
-            end
-          end
-        end
-        return data
-      end
+      
 end

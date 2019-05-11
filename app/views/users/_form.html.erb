@@ -10,7 +10,31 @@
     <%=f.label :password_confirmation %>
     <%=f.password_field :password_confirmation, class: 'form-control' %>
     <%= f.label :image %>
-    <%= f.file_field :image %>
-    <%=f.submit yield(:button_text), class: 'btn btn-primary'%>
+    <%= f.file_field :image,class:'image_up' %>
+    <img src="" type="file" class="image_thumb" />
+    <%=f.submit yield(:button_text), class: 'original-btn'%>
 
 <%end%> 
+<script>
+  $(function(){
+  $('.image_up').change(function(e){
+    //ファイルオブジェクトを取得する
+    let file = e.target.files[0];
+    let reader = new FileReader();
+
+    //画像ではない場合は処理終了
+    if(file.type.indexOf("image")<0){
+      alert("画像ファイルを指定してください。");
+      $('.image_thumb').attr("src",null);
+      return false;
+    }
+    
+    //アップロードした画像を設定する
+    reader.onload = (function(file){
+      return function(e){
+        $('.image_thumb').attr("src",e.target.result);
+      }
+    })(file);
+    reader.readAsDataURL(file);
+  });
+});</script>
