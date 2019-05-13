@@ -1,16 +1,23 @@
 <% provide(:title, @title) %>
 <div class="row">
     <%=render 'user_info'%>
+    <h3 class="title"><%= @title %></h3>
         <% @users.each do |user|%>
+            <span class="follow_user">
             <% if user.image? %>
-                <%= image_tag user.image.to_s,size: "64x64" %>
+                <%=link_to user_path(user) do%>
+                    <%= image_tag user.image.to_s,size: "64x64" %>
+                <%end%>
             <% else %>
-                <%= image_tag "/images/noimage.gif",size: "64x64" %>
+                <%=link_to user_path(user) do%>
+                    <%= image_tag "/images/noimage.gif",size: "64x64" %>
+                <%end%>
             <% end %>
+            
+            <span><%= user.name%></span>
+            </span>
         <% end %>
-    </aside>
     <div class="col-md-8">
-        <h3 class="title"><%= @title %></h3>
         <% if @users.any? %>
             <ul class="users follow">
             </ul>

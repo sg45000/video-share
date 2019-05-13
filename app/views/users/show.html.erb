@@ -1,5 +1,9 @@
 <div class="row">
-  <h2 class="title">Your Profile</h2>
+  <%if current_user==@user%>
+    <h2 class="title">Your Profile</h2> 
+  <%else%>
+    <h2 class="title">Others Profile</h2>
+  <%end%>
   <%=render 'user_info'%>
 </div>
 <div class="row">

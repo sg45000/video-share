@@ -20,5 +20,7 @@ module VideoShare
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
     #libを読み込む
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    #Ajaxが読み込めない場合に画面遷移させる。
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end
